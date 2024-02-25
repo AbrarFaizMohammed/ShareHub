@@ -134,7 +134,6 @@ app.post("/security",cookieJwtAuth, updatePasswordInformation);
 
 app.get("/deleteproduct",cookieJwtAuth, async(req,res)=>{
    const userSpecificProduct = await productSchema.find({user:req.user.id});
-   console.log(userSpecificProduct);
    res.render("deleteProduct",{userSpecificProduct:userSpecificProduct})
 })
 

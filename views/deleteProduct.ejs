@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Product</title>
+    <title>ShareHub</title>
     <link rel="stylesheet" href="deletePage.css">
+    
+    <script src="https://kit.fontawesome.com/59fd3ac906.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="deletePageClass">
+        <div class="pageTitle"><h1 class="titleName">Your Products</h1><a href="/home"><i class="fa-solid fa-house homebtn"></i></a></div>
         <%if(userSpecificProduct.length>0){%>
         <span>
-        <p>Your Products</p>
-        <div class="userProductsDisplay">
-            <% for(var i=0;i<userSpecificProduct.length;i++){ %>
+        <div class="userProductsDisplay">            
+          <% for(var i=0;i<userSpecificProduct.length;i++){ %>
                 <form action="/deleteproduct" method="post" class="deletePageForm">
                     <div class="delete_block">
                         <div class="leftdiv">
@@ -22,10 +24,10 @@
                                 alt="<%=userSpecificProduct[i].Name%>">
                         </div>
                         <div class="rightdiv">
-                            <p>
+                            <h2>
                                 <%=userSpecificProduct[i].Name%>
-                            </p>
-                        <button class="deleteButton" type="submit" name="productId" value="<%=userSpecificProduct[i]._id%>">Remove Product</button>
+                            </h2>
+                        <button class="custom-btn btn-animation deleteButton" type="submit" name="productId" value="<%=userSpecificProduct[i]._id%>"><span><i class="fa-solid fa-trash-can"></i></span><span>Remove Product</span></button>
     
                         </div>
                     </div>
@@ -37,7 +39,7 @@
         </div>
     </span>
     <%} else {%>
-        <span>Sorry No iteams to delete. Please add iteams</span>
+        <div>Sorry No iteams to delete. Please add iteams</div>
         <%}%>
 </body>
 
