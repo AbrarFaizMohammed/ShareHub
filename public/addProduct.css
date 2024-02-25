@@ -1,0 +1,215 @@
+/* changes to be made */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;700;900&display=swap');
+
+body {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 100px;
+    margin: 20px;
+    letter-spacing: 3px;
+    font-size: large;
+    color: white;
+    background-image: url(img/christian-lue-YYqpSfe9Ckw-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+#heading{
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+
+form {
+    max-width: 100%;
+    margin: auto;
+    height: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input, textarea {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+#productForm{
+    width: 60%;
+    float: left;
+}
+
+select {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+}
+
+.addproductsubmit {
+    background-color: #ff3333;
+    color: white;
+    font-weight:900px;
+    padding: 15px 20px;
+    border: none;
+    /* border-radius: 4px; */
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.addproductsubmit:hover {
+    background-color: black;
+    color: white;
+}
+
+input[type="file"] {
+    display: none; /* Hide the default file input button */
+}
+
+.contact{
+    display: flex;
+    align-items: center;
+}
+
+label[for="media1"]{
+    padding: 20px 30px;
+    height: 60px;
+    width: 60px;
+    /* background-color: #E0E0E0; */
+    background-color: rgb(222, 222, 222, 0.8);
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+label[for="media2"]{
+    padding: 20px 30px;
+    height: 60px;
+    width: 60px;
+    background-color: rgba(201, 76, 76, 0.8);
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.mediaIcons{
+    /* display: flex;
+    align-items: center; */
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 13px;
+    width: 30px;
+}
+
+label[for="media1"]:hover{
+    cursor: pointer;
+}
+
+label[for="media2"]:hover{
+    cursor: pointer;
+}
+
+#mediaContainer{
+    width: 90%;
+    margin: auto;
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+
+figure{
+    width: 45%;
+}
+
+img{
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    object-fit: cover;
+}
+
+figcaption{
+    text-align: left;
+    font-size: 2.4vmin;
+    margin-top: 0.5vmin;
+}
+
+.closeButton {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    justify-content: center;
+    background-color: none; 
+    border: none;
+    border-radius: 100px; 
+    margin: 5px;
+    padding: 10px;
+    opacity: 1;
+    width: px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.closeButton:hover{
+    color: white;
+}
+
+.imagebox{
+    display: flex;
+    justify-content: right;
+    height: auto;
+    max-height: 600px;
+    width: 80%;
+}
+
+/* CSS to arrange media container and form side by side */
+#mediaContainer,
+#productForm {
+    width: 50%;
+    box-sizing: border-box;
+    float: left;
+}
+
+.homebtn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:25px;
+    color:white;
+  }
+
+@media (max-width: 768px) {
+    #mediaContainer,
+    #productForm {
+        width: 100%; /* On smaller screens, make both elements occupy the full width */
+        float: none;
+    }
+}
+
+

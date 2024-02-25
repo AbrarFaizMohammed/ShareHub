@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <link rel="stylesheet" href="deletePage.css">
+</head>
+
+<body>
+    <div class="deletePageClass">
+        <%if(userSpecificProduct.length>0){%>
+        <span>
+        <p>Your Products</p>
+        <div class="userProductsDisplay">
+            <% for(var i=0;i<userSpecificProduct.length;i++){ %>
+                <form action="/deleteproduct" method="post" class="deletePageForm">
+                    <div class="delete_block">
+                        <div class="leftdiv">
+                            <img class="image" src="data:image/jpeg;base64,<%=userSpecificProduct[i].imageData%>"
+                                alt="<%=userSpecificProduct[i].Name%>">
+                        </div>
+                        <div class="rightdiv">
+                            <p>
+                                <%=userSpecificProduct[i].Name%>
+                            </p>
+                        <button class="deleteButton" type="submit" name="productId" value="<%=userSpecificProduct[i]._id%>">Remove Product</button>
+    
+                        </div>
+                    </div>
+                </form>
+
+                    <% } %>
+
+
+        </div>
+    </span>
+    <%} else {%>
+        <span>Sorry No iteams to delete. Please add iteams</span>
+        <%}%>
+</body>
+
+</html>

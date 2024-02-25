@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareHub</title>
+    <link rel="stylesheet" href="addProduct.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=aktura@400&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/59fd3ac906.js" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <div class="main-container">
+    
+        <a href="/home"><i class="fa-solid fa-house homebtn"></i></a>
+    <form id="productForm" action="/addproduct" method="post" enctype="multipart/form-data">
+        <h1>Add Your Product</h1>
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" placeholder="Ex: Black H&M Hoodie" required>
+
+        <label for="proCat">Category</label>
+        <select id="proCat" name="category">
+            <option value="Clothing">Clothing</option>
+            <option value="Vehicle">Vehicle</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Electronics">Electronics</option>
+        </select>
+
+        <label for="contactAddress">Location:</label>
+        <input id="contactInfo" name="Location" placeholder="Ex: Clemson" required>
+
+        <h2>Upload Photos and Videos:</h2>
+        <label for="media1" id="media1lable"><img class="mediaIcons" src="img\photos.png" alt="camera image"
+                height="30px" width="30px"></label>
+        <input type="file" id="media1" name="productPhotos" onchange="preview(); checkFiles(this);" accept="image/*"
+            multiple>
+        <br>
+        <br>
+
+        <button type="submit" class="addproductsubmit"><b>Submit</b></button>
+    </form>
+    <div id="mediaContainer"></div>
+</div>
+    <script>
+        let img_file = document.getElementById("media1");
+        let img_fileLable = document.getElementById("media1lable");
+        let media_container = document.getElementById("mediaContainer");
+
+        function preview() {
+            for (let i of img_file.files) {
+                let reader = new FileReader();
+                let figure = document.createElement("figure");
+                let closeButton = document.createElement("button");
+
+                closeButton.innerHTML = "<b>x</b>";
+                closeButton.classList.add("closeButton");
+                closeButton.onclick = function () {
+                    this.parentNode.remove();
+                    img_fileLable.style.opacity = '';
+                    img_fileLable.style.pointerEvents = '';
+                    img_fileLable.style.backgroundColor = '';
+                    location.reload();
+                };
+
+                figure.appendChild(closeButton);
+                figure.classList.add("imagebox");
+
+                reader.onload = () => {
+                    let img = document.createElement("img");
+                    img.setAttribute("src", reader.result);
+                    figure.insertBefore(img, closeButton);
+                }
+                media_container.appendChild(figure);
+                reader.readAsDataURL(i);
+
+            }
+        }
+
+        function checkFiles(input) {
+            if (input.files.length >= 1) {
+                img_fileLable.style.opacity = '0.5';
+                img_fileLable.style.pointerEvents = 'none';
+                img_fileLable.style.backgroundColor = '#f0f0f0';
+            }
+
+        }
+
+        img_file.addEventListener('change',()=>{
+            if(img_file.files.length>1)
+            {
+                img_file.disabled = true;
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
