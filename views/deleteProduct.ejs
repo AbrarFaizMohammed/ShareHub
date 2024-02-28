@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareHub</title>
+    <link rel="stylesheet" href="deletePage.css">
+    
+    <script src="https://kit.fontawesome.com/59fd3ac906.js" crossorigin="anonymous"></script>
+    <!-- <link href="https://api.fontshare.com/v2/css?f[]=aktura@400&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/59fd3ac906.js" crossorigin="anonymous"></script> -->
+</head>
+
+<body>
+    <div class="deletePageClass">
+
+        <div class="pageTitle"><h1 class="titleName">Your Products</h1><a href="/home"><i class="fa-solid fa-house homebtn"></i></a></div>
+        <%if(userSpecificProduct.length>0){%>
+        <span>
+        <div class="userProductsDisplay">            
+          <% for(var i=0;i<userSpecificProduct.length;i++){ %>
+                <form action="/deleteproduct" method="post" class="deletePageForm">
+                    <div class="delete_block">
+                        <div class="leftdiv">
+                            <img class="image" src="data:image/jpeg;base64,<%=userSpecificProduct[i].imageData%>"
+                                alt="<%=userSpecificProduct[i].Name%>">
+                        </div>
+                        <div class="rightdiv">
+                            <h2>
+                                <%=userSpecificProduct[i].Name%>
+                            </h2>
+                        <button class="custom-btn btn-animation deleteButton" type="submit" name="productId" value="<%=userSpecificProduct[i]._id%>"><span><i class="fa-solid fa-trash-can"></i></span><span>Remove Product</span></button>
+    
+                        </div>
+                    </div>
+                </form>
+
+                    <% } %>
+
+
+        </div>
+    </span>
+    <%} else {%>
+        <!-- <a href="/home"><i class="fa-solid fa-house homebtn"></i></a> -->
+        <div class="no_items_container">
+            <div class="shadow_block">
+                <img src="img/sad-face.png" alt="sad face" class="smiley">
+                <div class="no_items">
+                    <p>No items to delete</p>
+                    <a href="/addproduct" class="custom-btn btn-animation deleteButton fix"><span>+</span><span>Add Product</span></a>
+                </div>
+            </div>
+        </div>        
+        <%}%>
+</body>
+
+</html>

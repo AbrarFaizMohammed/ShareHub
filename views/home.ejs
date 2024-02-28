@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareHub</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=aktura@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
+    <link rel="stylesheet" type="text/css" href="map.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox.css" />
+    <script
+        src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.1.2-public-preview.15/services/services-web.min.js"></script>
+    <script
+        src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox-web.js"></script>
+
+    <script src="https://kit.fontawesome.com/59fd3ac906.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="page-logo"><a class="logo" href="/home"><b>ShareHub</b></a></div>
+
+        <div class="nav-other-options">
+                <div class="add-to-cart"><a href="/addproduct" class="addProductlink"><span
+                            class="addProduct tooltip"><span class="tooltiptext">Add Product</span>+</span></a></div>
+                <span class="partation" style="bottom: 20px;"></span>
+                <div class="add-to-cart"><a href="#" class="aboutlink"><span class="addProduct tooltip"><span
+                                class="tooltiptext">About</span><img src="img/info.png" height="17.52px"></span></a>
+                </div>
+
+                <span class="userName"><span class="partation"></span> welcome <%=name%>!<span
+                            class="partation"></span></span>
+                <div class="profileInfo" id="profile"><i class="fa-regular fa-user"></i></div>
+           
+        </div>
+        <span class="barIcon"><span class="add-to-cart"><a href="#" class="aboutlink"><span class="addProduct tooltip"><span
+            class="tooltiptext">About</span><img class="aboutImage" src="img/info.png" height="17.52px"></span></a>
+</span><i class="fa-solid fa-bars" id="bar"></i></span>
+        <div class="profileoptions" id="profileoption">
+            <div class="profileoptions-arrow"></div>
+            <ul class="profileOptionsList">
+                <li><a class="optionlink" href="/deleteproduct"><span class="listItem"><i
+                                class="fa-solid fa-user-gear optionsIcon"></i>Manage</span></a></li>
+                <li><a class="optionlink" href="/security"><span class="listItem"><i
+                                class="fa-solid fa-fingerprint optionsIcon"></i>Security</span></a></li>
+                <li><a class="optionlink" href="/logout"><span class="listItem"><i
+                                class="fa-solid fa-right-from-bracket optionsIcon"></i>Logout</span></a></li>
+            </ul>
+        </div>
+        <div class="mobiledropdownoptions" id="mdds">
+            <ul class="profileOptionsList">
+                <li class="mobileUserNameTitle">
+                    <p> welcome <%=name%>!</p>
+                </li>
+                <li class="mobileoptionslisttag"><a class="optionlink" href="/addproduct"><span class="listItem"><i
+                                class="fa-solid fa-square-plus plusoptionsIcon"></i>Add Product</span></a></li>
+                <li class="mobileoptionslisttag"><a class="optionlink" href="/deleteproduct"><span class="listItem"><i
+                                class="fa-solid fa-user-gear optionsIcon"></i>Manage</span></a></li>
+                <li class="mobileoptionslisttag"><a class="optionlink" href="/security"><span class="listItem"><i
+                                class="fa-solid fa-fingerprint optionsIcon"></i>Security</span></a></li>
+                <li class="mobileoptionslisttag"><a class="optionlink" href="/logout"><span class="listItem"><i
+                                class="fa-solid fa-right-from-bracket optionsIcon"></i>Logout</span></a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <main>
+        <span id="ppl" class="popupdb-content">
+            <span class="popup-conent">
+
+                <div class="popup" id="popup">
+                    <div class="close">
+                        <button id="closebtn" class="close_btn" href="#">X</button>
+                    </div>
+                    <div id="map"></div><br>
+                    <div>
+                        <button id="aplybtn" class="apply_btn" href="#">Apply</button>
+                    </div>
+                </div>
+
+            </span>
+        </span>
+        <span class="main-content">
+            <div class="categories-block">
+                <h2 class="categories-block-title">Category</h2>
+                <span class="categoriesIcons">
+                    <% for(var i=0;i <categorySelectionImages.length;i++){ %>
+                        <span>
+                            <form action="/home" method="post">
+                                <button type="submit" name="name" value="<%=categorySelectionImages[i].categoryName%>"
+                                    class="catSubmitbtn">
+                                    <span class="categoriesIcons_block">
+                                        <img class="ClassIconImages"
+                                            src="data:image/png;base64,<%=categorySelectionImages[i].imageData%>"
+                                            alt="<%=categorySelectionImages[i].categoryName%>">
+                                    </span>
+                                </button>
+                            </form>
+                            <p class="categoryName">
+                                <%=categorySelectionImages[i].categoryName%>
+                            </p>
+                        </span>
+                        <%}%>
+                </span>
+            </div>
+            <div class="searchBox">
+                <form action="/home" method="post">
+                    <div class="sb-outerbox">
+                        <span><i class="fa-solid fa-magnifying-glass searchboxtextareaIcon"></i><input
+                                class="searchboxtextarea" type="text" name="name"
+                                placeholder="Insert a category keyword" autocomplete="off"></span>
+                        <span><span class="line"></span><i class="fa-solid fa-location-dot locationIcon"></i></i><input
+                                id="ls" class="locationSearch" type="text" name="city" value=""
+                                placeholder="Enter city name ..." readonly></span>
+                        <button id="searchbtn" type="submit" class="searchbtn">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="productsDisplay">
+                <% for(var i=0;i<productInformation.length;i++){ %>
+                    <div><span class="iteam"><a class="iteamlink" href="/products/<%=productInformation[i]._id%>"><img
+                                    class="image" src="data:image/jpeg;base64,<%=productInformation[i].imageData%>"
+                                    alt="<%=productInformation[i].Name%>"></span>
+                        <p class="imageDescription">
+                            <%=productInformation[i].Name%>
+                        </p></a>
+                    </div>
+                    <% } %>
+            </div>
+        </span>
+    </main>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <script
+        src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox-web.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="map.js"></script>
+    <script>
+        var userProfile = document.getElementById("profile");
+        var profileOptions = document.getElementById("profileoption");
+        userProfile.addEventListener('click', () => {
+            if (profileOptions.style.display === 'none') {
+                profileOptions.style.display = 'block';
+            }
+            else {
+                profileOptions.style.display = 'none';
+            }
+        })
+
+        const closebtn = document.getElementById("closebtn");
+        const poplayer = document.getElementById('ppl');
+
+        closebtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            poplayer.style.display = 'none';
+        })
+
+        const searchbtn = document.getElementById('searchbtn');
+
+        searchbtn.addEventListener('click', (e) => {
+            <!-- e.preventDefault(); -->
+        })
+
+        const navbar = document.getElementById("bar");
+        const mobileNav = document.getElementById("mdds");
+
+        navbar.addEventListener('click', () => {
+            if (mobileNav.style.display == 'none') {
+                mobileNav.style.display = 'block'
+            }
+            else {
+                mobileNav.style.display = 'none'
+            }
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShareHub</title>
+    <link rel="stylesheet" href="/product.css" />
+    <link href="https://api.fontshare.com/v2/css?f[]=aktura@400&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/59fd3ac906.js" crossorigin="anonymous"></script>
+    <!-- tomtom maps links -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css"
+        href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.3-public-preview.0/SearchBox.css" />
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+
+<body style="
+      background-image: url(data:image/jpeg;base64,<%=Image%>);
+      background-size: cover;
+    ">
+    <div class="main-container">
+        <div class="image-container">
+            <a href="/home"><i class="fa-solid fa-house homebtn"></i></a>
+            <img class="image" src="data:image/jpeg;base64,<%=Image%>" alt="<%=Image%>" />
+        </div>
+
+        <div class="description-container">
+            <p class="productTitle">
+                <%=Description%>
+            </p>
+            <div class="productInformation">
+                <div id="map"></div>
+                <p class="locationinformation">
+                    <b>
+                        <%=productLocation%>
+                    </b><br /><span class="locationAdditionalInfo">Location is approximate</span>
+                </p>
+                <div id="messageBox" class="messageBox">
+                    <div class="userInformation-bar">
+                        <img class="userIcon"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAfdJREFUSEu11UuoSFEUBuDvkphgIKG8ihCFgVAyQiEjjzEppZCipDBBjL1CKY+ZIlEiSYkMiJIByiMGSJJMGHidpXNq2519T13dPdtn/Xv9a+317//06OfV08/5dREMwkosw2xMrAt6jUe4jkv4USq0N4LFOIFJHV0+w0bcbsOVCHZhH50dNjl/YjsO5SRtBHuwt4+z2YKj6dmcYAlu9DF5HPtVzWU+HjQ5UoIBeILpLQRfsBOX69hqHMDQFuxdLGwjCLVcLFS/Dmez2Kb8OpL4AtyLfdrBhaqDVQWCkfiUxcbgXQF/GFtzgrcYVzgwCh+z2Gi8L+AfYk5O8A1DCgfW43QWC+0fL+A/Y0RO8LUwtMDFkHfUQw4xxLwOYliBIHINzwmeY8p/SDQ9+rRRYzrkM1jbQhDafoz7lSV8qONx/3MrH5pVPcroKF+nsCHvYDmuZsjoagVeFDqbhmuJCTawRbiVE8Q+Kp1Zo35jMl51XNtUhOE1Kzqd12xyqwjmmwn4POKRfS+QhOrOYU0dj+uMV/z3kbV1EN/CSfcnCd9UkjtS+39YyUDMqHUe5jY2wW7GsbSYkl3vrh2164fU5Aq73oZ4wf+s3hIsxUmM75hBCCEUc6cN11Xh4NqfQmEx/AmI4b9E2EEo6Aqig9bVRdBRfHe43wn+AAntVBlfO442AAAAAElFTkSuQmCC" />
+                        <p class="UserNameDetails">
+                            <%=productOwnerName%>
+                        </p>
+                        <img id="closeChatbox" class="closeChatbox"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAW9JREFUSEu91b1KHGEUxvGfHxgC3oGVpPEGAkmqCGoMGhIb8ULSBFIkjQheiIWCFokaTCQkJEVKm3Ri4SUofn/MG86GYR2X191ZF4Zdlnn/zznPeeZMjy5/errMVxZ4jQWMdCj6F2+xnjhlgX0MdQhvHN/Fo2aBq5rgDcy/4ssd3CbwC0/Q11TABf7g6S2FZQn8wHhca+gP2BlmsFUIfMHzCpEsgd8YwxGmsBqg9DvBH+IrnrUrkM79xEscYhrHAR2M6qvg/+3PmUG6OXXyoojfQVSa4Nt43CIYWRY1zl9iMmxJ/01gA711CKS0zGElPD9HGvIsllqIZHWQYG8KKz7jQRHXzYC/wkkkabkiwtkzSKvjXVSeREbDkm+RqiSyGKuh2a2sDk6jg/cVUfyOeXwqvgc6iWm7GySrg3bhexjO3UV3FdmJud1Y1+Vl97Ggfrgruer+qie5NniVRbXCmwWSJbXYUrbqXl/6dcz0BuMa/QxJGaF2Kr4AAAAASUVORK5CYII=" />
+                    </div>
+                    <form id="typeareaForm" class="typearea" action="/products/<%=ProductInformation%>" method="post">
+                        <input type="hidden" name="productInformation" value="<%=ProductInformation%>">
+                        <input type="hidden" name="loginUserinformation" value="<%=loginUserinformation%>">
+                        <input type="hidden" name="productOwnerinformation" value="<%=productOwnerinformation%>">
+                        <textarea id="userMessage" class="textbox" name="userMessage" cols="80" rows="80"
+                            placeholder="Enter your message..."></textarea>
+                        <button class="sendbtn">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASVJREFUSEu91bErhVEYx/HP3WxsyGQgShlMRv4DFkopDPwlN5LJgpViklXKZJDFimwKk5GScE+d4fb2uvfcl+PUW2+d5/l9z/O85/m9NZlXLbO+fwecYgLb8Xn5bYXFCh7RH0VfG++72MRTVVARcIj5gtg79rGO+05BRcAqdn4Q+cQx6rhOBRUBw7hNSD6LFZ23iy27RaHffe0S4/5VBJ3gqyynDDCAZSxhMBF0gw0c4KM5p9UchL1prGCmcdKuBNgDtrCHtxCfOmg9WMAaxhJAoaLRTgDdWIzVjCcALjHZDhCqm4qis3/Zouwf+Rm9CW0IIR1f0yHcJYhXHrTsVnGEuZxm12wTwa7DwAS7DjZeaRUH7QIjOX84lU7ZKinVKiqDswO+AW5NQBmBDju3AAAAAElFTkSuQmCC" />
+                        </button>
+                    </form>
+                </div>
+                <div id="chatbtn" class="chatbtn">Message</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let center = [<%= longitude %>, <%= latitude %>]
+    const map = tt.map({
+        key: "<%=API_KEY%>",
+        container: "map",
+        center: center,
+        zoom: 7
+    })
+
+    map.on('load', () => {
+        new tt.Marker().setLngLat(center).addTo(map);
+    })
+
+    const chatbtn = document.getElementById("chatbtn");
+    const messageBox = document.getElementById("messageBox");
+    const closeMessagebox = document.getElementById("closeChatbox");
+    chatbtn.addEventListener("click", () => {
+        chatbtn.style.display = "none";
+        messageBox.style.display = "block";
+
+    });
+
+    closeMessagebox.addEventListener('click', () => {
+        chatbtn.style.display = "block";
+        messageBox.style.display = "none";
+    });
+
+    /*var formData = document.getElementById('typeareaForm');
+    formData.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const BuyerMessage = document.getElementById('userMessage');
+        const productOwnerInformation = BuyerMessage.getAttribute('productInformation');
+        const loginUserinformation = BuyerMessage.getAttribute('loginUserinformation');
+        const productOwnerinformation = BuyerMessage.getAttribute('productOwnerinformation');
+
+        const BuyerMessagePackage = JSON.stringify({
+            senderId: loginUserinformation,
+            receiverId: productOwnerinformation,
+            message: BuyerMessage.value,
+            productDetails: productOwnerInformation
+        });
+        console.log(BuyerMessagePackage);
+
+        fetch('/message', {
+            method: 'POST',
+            body: BuyerMessagePackage
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data as needed
+            console.log(data);
+        }).catch(error => {
+                console.error('Error:', error);
+            });
+
+            console.log("Form Submitted");
+
+    }); */
+</script>
+
+</html>
