@@ -44,14 +44,14 @@ app.get("/home", cookieJwtAuth, getCategoriesImages, getproductsInformation, (re
 app.post("/home", cookieJwtAuth, getCategoriesImages,getproductsInformation, async (req, res) => {
    const catName = _.startCase(req.body.name);
    var locationName = _.lowerCase(req.body.city);
-   if(req.body.city == undefined)
+   if(req.body.city == undefined || req.body.city=="")
    {
       locationName = "clemson"
    }
-   const catDetails = await categorySchema.find({ categoryName: catName });   
-
+   
+   const catDetails = await categorySchema.find({ categoryName: catName });  
    if(catDetails.length !=0){
-      const productInfoByCategory = await productSchema.find({ category: catDetails[0]._id, location:locationName});
+      const productInfoByCategory = await productSchema.find({ category:catDetails[0]._id, location:locationName});     
       res.render("home", { name: req.user.username, categorySelectionImages: req.catImages, productInformation: productInfoByCategory });
       
    }
