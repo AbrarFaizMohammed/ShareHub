@@ -223,6 +223,7 @@ body {
     margin-top: 20px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    border-radius: 10px;
   }
 
   .productInformation {
