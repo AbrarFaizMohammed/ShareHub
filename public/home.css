@@ -396,6 +396,19 @@ color:#CBCACC;
         position:relative;
         bottom:4px;
     }
+    .ClassIconImages{    
+        object-fit:cover;
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        transition: transform 250ms;
+    }
+    .categoryName{
+        margin-top:15px;
+        caret-color:transparent;
+        cursor:transparent;
+        font-size: 13px;
+    }
 }
 
 /*************mobile design****************/
