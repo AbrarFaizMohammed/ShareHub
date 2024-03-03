@@ -106,6 +106,9 @@ app.get("/addproduct",(req,res)=>{
    res.render("addProduct");
 })
 
+app.get("/about",(req,res)=>{
+   res.render("about");
+})
 
 
 
