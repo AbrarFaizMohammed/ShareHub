@@ -117,7 +117,7 @@ mongoose.connection.once('open', () => {
             await ProductImageUpload("Electronics");
             await ProductImageUpload("Furniture");
             await ProductImageUpload("Vehicles");
-
+            Console.log("Product data imported successfully :)");
         } catch (error) {
             console.error("Error in script:", error);
         }

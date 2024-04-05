@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { default: mongoose } = require("mongoose");
 const bcrypt = require('bcrypt');
+const { Console } = require("console");
 const categorySchema = require(path.join(__dirname, '../models/Category-model.js'));
 const userSchema = require(path.join(__dirname, '../models/user-model.js'));
 const categoryImagesFolder = path.join(__dirname, '../Images/Category');
@@ -28,6 +29,7 @@ const categoryImagesUpload = async () => {
             await catageoryInfo.save();
         }
     }
+    Console.log("Category data imported successfully :)");
 
   } catch (err) {
     console.error(err);
