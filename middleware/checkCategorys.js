@@ -29,7 +29,7 @@ const categoryImagesUpload = async () => {
             await catageoryInfo.save();
         }
     }
-    Console.log("Category data imported successfully :)");
+    console.log("Category data imported successfully :)");
 
   } catch (err) {
     console.error(err);
