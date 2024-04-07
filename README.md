@@ -35,7 +35,7 @@ The project's development journey sharpened skills in full-stack web development
 
 With a focus on user experience and community building, Sharehub provides a modern and efficient tool for facilitating connections and promoting goodwill. The platform's ethos revolves around creating a welcoming space for sharing resources and fostering a culture of generosity.
 
-https://github.com/AbrarFaizMohammed/DailyProgress/assets/131560669/f87411a3-11ae-4783-8899-e295decf9501
+https://github.com/AbrarFaizMohammed/ShareHub/assets/131560669/b5d6df57-3682-4456-a299-c8322f15ffd9
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -53,6 +53,8 @@ https://github.com/AbrarFaizMohammed/DailyProgress/assets/131560669/f87411a3-11a
 * [![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)](https://mongoosejs.com/)
 * [![EJS](https://img.shields.io/badge/EJS-2B2B2B?style=for-the-badge&logo=ejs&logoColor=white)](https://ejs.co/)
 * [![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white)](https://nodemon.io/)
+* [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
 
 
 
@@ -67,39 +69,51 @@ https://github.com/AbrarFaizMohammed/DailyProgress/assets/131560669/f87411a3-11a
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To start your journey with Daily Progress, simply.
+To start your journey with ShareHub, simply.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-To get started, first download Node.js from the official website: <a href="https://nodejs.org/en/download">Nodejs Download</a>. 
-After installing Node.js, you can verify that npm is installed by opening a terminal or command prompt and typing:
-* npm
-  ```sh
-  npm -v
-  ```
+To get started with Docker, first install Docker Desktop from the official website: <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop Download</a>.
+After installing Docker Desktop, you can verify that Docker is installed by opening a terminal or command prompt and typing:
+```sh
+docker --version
+```
 
+Login to your Docker account or create a Docker account if you do not have one, then open a terminal or command prompt and type:
+
+```sh
+docker login
+```
 ### Installation
 
-Congratulations on making it this far! You're now ready to dive into the Daily Progress code and start exploring.<br/>
+Congratulations on making it this far! You're now ready to dive into the ShareHub code and start exploring.<br/>
 
 Happy coding!
 
-1. Clone the repo
+1. Now you can pull the following Docker image in your terminal or command prompt using the following command:
    ```sh
-   git clone https://github.com/AbrarFaizMohammed/DailyProgress.git
+   docker pull abrarfaiz96/sharehub
    ```
-2. Install NPM packages
+2. After successfully pulling the `abrarfaiz96/sharehub` Docker image, you can run the container using the following command:
    ```sh
-   npm install
+   docker run -d -p 8000:3000 abrarfaiz96/sharehub:latest
    ```
-3. Create `.env` File: Start by creating a `.env` file in the root directory of your project. Enter MongoDB Connection String: Open the `.env` file and enter your MongoDB connection string. For example:
-   ```js
-   MONGODB_URI=your_connection_string_here
-   ```
-4. To run the project, use the following command:
+   The command `docker run -d -p 8000:3000 abrarfaiz96/sharehub:latest` is used to run a Docker container based on the `abrarfaiz96/sharehub:latest` image. Let's break down the command:
+
+- `docker run`: This part of the command instructs Docker to run a container.
+- `-d`: This flag tells Docker to run the container in detached mode, meaning it runs the container in the background and prints the container ID.
+- `-p 8000:3000`: This option specifies port mapping, where `8000` is the host port and `3000` is the container port. This means that connections made to port `8000` on the host will be forwarded to port `3000` inside the container. So, if your application inside the container is listening on port `3000`, you can access it using port `8000` on your host machine.
+- `abrarfaiz96/sharehub:latest`: This is the name of the Docker image and its tag. It tells Docker which image to use for creating the container. In this case, it's using the image named `abrarfaiz96/sharehub` with the tag `latest`.
+
+Overall, the command runs a container in detached mode, maps port `8000` on the host to port `3000` in the container, and uses the `abrarfaiz96/sharehub:latest` image.
+
+
+**Note:** You can replace port number 8000 with any other port because 8000 is the host port, meaning Docker will listen for incoming connections on port 8000 of your host machine.
+
+3. Congratulations! 🎉 You've made it this far! Now, you just need to paste the URL.
    ```sh
-   npm run dev
+     http://localhost:8000/
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
