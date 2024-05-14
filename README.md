@@ -9,7 +9,7 @@
 -->
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/vishnuvulli/)
-[![ShareHub](https://img.shields.io/badge/ShareHub-green?style=for-the-badge&logoColor=white)](https://github.com/AbrarFaizMohammed/ShareHub)
+[![Patient Treatment Recommendation](https://img.shields.io/badge/ShareHub-green?style=for-the-badge&logoColor=white)](https://github.com/AbrarFaizMohammed/ShareHub)
 
 
 
